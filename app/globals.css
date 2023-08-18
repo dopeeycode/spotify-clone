@@ -9,7 +9,3 @@ body,
   background-color: black;
   color-scheme: dark;
 }
-
-body {
-  @apply bg-gradient-to-b from-zinc-900  to-zinc-950
-}
