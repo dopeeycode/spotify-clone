@@ -2,10 +2,24 @@
 
 import { TbPlaylist } from 'react-icons/tb'
 import { AiOutlinePlus } from 'react-icons/ai'
+import useAuthModal from '@/hooks/useAuthModal'
+import { useUser } from '@/hooks/useUser'
+import useUploadModal from '@/hooks/useUploadModal'
 
 const Library = () => {
-  function onClick() {
-    // Handle upload later
+  const authModal = useAuthModal()
+  const uploadModal = useUploadModal()
+
+  const { user, subscription } = useUser()
+
+  function handleUpload() {
+    if (!user) {
+      return authModal.onOpen()
+    }
+
+    // TODO: Check for subscription
+
+    return uploadModal.onOpen()
   }
   return (
     <div className="flex flex-col">
@@ -22,7 +36,7 @@ const Library = () => {
             Sua Biblioteca
           </p>
         </div>
-        <button type="button" onClick={onClick}>
+        <button type="button" onClick={handleUpload}>
           <AiOutlinePlus size={20} className="text-neutral-400 hover:text-white transition" />
         </button>
       </div>
