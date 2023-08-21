@@ -1,10 +1,15 @@
 "use client"
 
+import { useUser } from '@/hooks/useUser'
 import { twMerge } from 'tailwind-merge'
 import { RxCaretLeft, RxCaretRight } from 'react-icons/rx'
 import { HiHome } from 'react-icons/hi'
 import { BiSearch } from 'react-icons/bi'
 import { useRouter } from 'next/navigation'
+import { SignUp } from '@supabase/auth-ui-react'
+import { useSessionContext, useSupabaseClient } from '@supabase/auth-helpers-react'
+import { FaUserAlt } from 'react-icons/fa'
+import { toast } from 'react-hot-toast'
 import Button from './Button'
 import useAuthModal from '@/hooks/useAuthModal'
 
@@ -19,10 +24,23 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
   const authModal = useAuthModal()
   const router = useRouter()
+
+  const supabaseClient = useSupabaseClient()
+  const { session } = useSessionContext()
+
   
-  function handleLogout(){
-    // Handle logout in the future
+  async function handleLogout(){
+    const { error } = await supabaseClient.auth.signOut()
+    // TODO: Reset any playing songs
+    router.refresh()
+
+    if (error) {
+      toast.error(error.message)
+    }
   }
+
+  console.log(session?.user)
+
 
   return (
     <div 
@@ -56,7 +74,25 @@ const Header: React.FC<HeaderProps> = ({
           </button>
         </div>
         <div className="flex justify-between items-center gap-x-4">
-          <>
+          {session?.user ? (
+            <>
+              <div className="flex gap-4 items-center">
+              <Button 
+                className="bg-white text-black px-6 py-2"
+                onClick={handleLogout}
+              >
+                Sair
+              </Button>
+              <Button 
+                onClick={() => router.push('/account')}
+                className="bg-green-500 text-black"
+              >
+                <FaUserAlt />
+              </Button>
+            </div>
+            </>
+          ): (
+            <>
             <div>
               <Button 
                 className="bg-transparent text-neutral-300 font-medium"
@@ -74,6 +110,7 @@ const Header: React.FC<HeaderProps> = ({
               </Button>
             </div>
           </>
+          )}
         </div>
       </div>
       {children}
