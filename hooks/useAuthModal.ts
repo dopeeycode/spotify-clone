@@ -1,3 +1,5 @@
+import { SignUp } from '@supabase/auth-ui-react'
+import { JSXElementConstructor } from 'react'
 import { create } from 'zustand'
 
 interface AuthModalStore {
