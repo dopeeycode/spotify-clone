@@ -19,7 +19,7 @@ const AddSongMobile = () => {
   }
 
   return (
-    <div className="flex md:hidden bg-green-500 rounded-full p-2 absolute right-5 bottom-5">
+    <div className="flex md:hidden bg-green-500 rounded-full p-2 absolute z-10 right-5 bottom-5">
       <button onClick={handleUpload}>
         <BiPlus size={30} />
       </button>
