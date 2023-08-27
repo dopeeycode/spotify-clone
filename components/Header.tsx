@@ -66,12 +66,12 @@ const Header: React.FC<HeaderProps> = ({
           <Link href={'/'}
             className="rounded-full p-2 bg-white items-center justify-center hover:opacity-75 transition"
           >
-            <HiHome className="text-black" size={20} />
+            <HiHome className="text-black" size={25} />
           </Link>
           <Link href={'/search'}
             className="rounded-full p-2 bg-white items-center justify-center hover:opacity-75 transition"
           >
-            <BiSearch className="text-black" size={20} />
+            <BiSearch className="text-black" size={25} />
           </Link>
         </div>
         <div className="flex justify-between items-center gap-x-4">
