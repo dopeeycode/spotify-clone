@@ -21,7 +21,7 @@ export default async function Page() {
           </h1>
           <main
             className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 mt-4"
-          >
+            >
             <ListItem
               href="liked"
               name="Músicas curtidas"
