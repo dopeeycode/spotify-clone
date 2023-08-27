@@ -2,13 +2,12 @@
 
 import useUploadModal from "@/hooks/useUploadModal"
 import Modal from "./Modal"
+import Input from "./Input"
+import Button from "./Button"
 import { useRouter } from "next/navigation"
 import { useForm, FieldValues, SubmitHandler } from "react-hook-form"
 import { useState } from "react"
-import Input from "./Input"
-import Button from "./Button"
 import { toast } from "react-hot-toast"
-import { FaGlasses } from "react-icons/fa"
 import { useUser } from "@/hooks/useUser"
 import uniqid from 'uniqid'
 import { useSupabaseClient } from "@supabase/auth-helpers-react"
@@ -65,7 +64,7 @@ const UploadModal = () => {
 
       if (songError) {
         setIsLoading(false)
-        return toast.error('Failed song upload.')
+        return toast.error('Falha ao enviar a música.')
       }
 
       // Upload image
@@ -87,7 +86,7 @@ const UploadModal = () => {
 
       if (imageError) {
         setIsLoading(false)
-        return toast.error('Failed image upload.')
+        return toast.error('Falha ao enviar a imagem.')
       }
 
       const {
@@ -109,7 +108,7 @@ const UploadModal = () => {
     
       router.refresh()
       setIsLoading(false)
-      toast.success('Song created')
+      toast.success('Música enviada!')
       reset()
       uploadModal.onClose()
 
