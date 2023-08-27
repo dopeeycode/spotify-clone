@@ -9,3 +9,17 @@ body,
   background-color: black;
   color-scheme: dark;
 }
+
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #121214;
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--linear-degrade, linear-gradient(10deg, #14532d 25%, #86efac 100%));
+  border-radius: 14px;
+}
