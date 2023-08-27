@@ -12,6 +12,7 @@ import { FaUserAlt } from 'react-icons/fa'
 import { toast } from 'react-hot-toast'
 import Button from './Button'
 import useAuthModal from '@/hooks/useAuthModal'
+import Link from 'next/link'
 
 interface HeaderProps {
   children: React.ReactNode
@@ -62,16 +63,16 @@ const Header: React.FC<HeaderProps> = ({
           </button>
         </div>
         <div className="flex md:hidden gap-x-2 items-center">
-          <button
+          <Link href={'/'}
             className="rounded-full p-2 bg-white items-center justify-center hover:opacity-75 transition"
           >
             <HiHome className="text-black" size={20} />
-          </button>
-          <button
+          </Link>
+          <Link href={'/search'}
             className="rounded-full p-2 bg-white items-center justify-center hover:opacity-75 transition"
           >
             <BiSearch className="text-black" size={20} />
-          </button>
+          </Link>
         </div>
         <div className="flex justify-between items-center gap-x-4">
           {session?.user ? (
