@@ -1,21 +1,22 @@
 "use client"
 
-import { useUser } from '@/hooks/useUser'
 import { twMerge } from 'tailwind-merge'
 import { RxCaretLeft, RxCaretRight } from 'react-icons/rx'
 import { HiHome } from 'react-icons/hi'
 import { BiSearch } from 'react-icons/bi'
 import { useRouter } from 'next/navigation'
-import { SignUp } from '@supabase/auth-ui-react'
 import { useSessionContext, useSupabaseClient } from '@supabase/auth-helpers-react'
-import { FaUserAlt } from 'react-icons/fa'
 import { toast } from 'react-hot-toast'
+import { IoIosArrowDown } from 'react-icons/io'
 import Button from './Button'
 import useAuthModal from '@/hooks/useAuthModal'
 import Link from 'next/link'
+import ProfileHeader from './ProfileHeader'
+import React from 'react'
+
 
 interface HeaderProps {
-  children: React.ReactNode
+  children?: React.ReactNode
   className?: string
 }
 
@@ -23,9 +24,9 @@ const Header: React.FC<HeaderProps> = ({
   children,
   className
 }) => {
+  const [modalActive, setModalActive] = React.useState(false)
   const authModal = useAuthModal()
   const router = useRouter()
-
   const supabaseClient = useSupabaseClient()
   const { session } = useSessionContext()
 
@@ -40,7 +41,7 @@ const Header: React.FC<HeaderProps> = ({
     }
   }
 
-  console.log(session?.user)
+
 
 
   return (
@@ -78,19 +79,11 @@ const Header: React.FC<HeaderProps> = ({
           {session?.user ? (
             <>
               <div className="flex gap-4 items-center">
-              <Button 
-                className="bg-white text-black px-6 py-2"
-                onClick={handleLogout}
-              >
-                Sair
-              </Button>
-              <Button 
-                onClick={() => router.push('/account')}
-                className="bg-green-500 text-black"
-              >
-                <FaUserAlt />
-              </Button>
-            </div>
+                <ProfileHeader
+                  setModalActive={setModalActive} 
+                  modalActive={modalActive} 
+                />
+              </div>
             </>
           ): (
             <>
