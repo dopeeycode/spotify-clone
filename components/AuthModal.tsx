@@ -36,7 +36,6 @@ const AuthModal = () => {
   }
 
 
-  console.log(user?.user_metadata.name)
   return (
     <Modal 
       title="Bem vindo de volta !" 
