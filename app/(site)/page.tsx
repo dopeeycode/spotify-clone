@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import ListItem from "@/components/ListItem";
 import PageContent from "./components/PageContent";
 import AddSongMobile from "@/components/AddSongMobile";
+import { useUser } from "@/hooks/useUser";
 
 
 export const revalidate = 0
@@ -11,7 +12,7 @@ export default async function Page() {
   const songs = await getSongs()
 
   return (
-    <div className="bg-neutral-900 rounded-lg h-full w-full overflow-hidden overflow-y-auto">
+    <div className="bg-neutral-950 rounded-lg h-full w-full overflow-hidden overflow-y-auto">
       <Header>
         <section className="mb-2">
           <h1
