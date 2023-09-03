@@ -59,11 +59,11 @@ const Library: React.FC<LibraryProps> = ({
                 data={song}
               />
             ))}
-            <Link href={"/library"}>
+            {/* <Link href={"/library"}>
               <Button className="py-2 px-2">
                 Ver mais
               </Button>
-            </Link>
+            </Link> */}
           </>
         ): (
           songs.map((song) => (
