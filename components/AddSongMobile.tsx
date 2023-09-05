@@ -21,7 +21,7 @@ const AddSongMobile = () => {
   }
 
   return (
-    <div className={twMerge("flex md:hidden bg-green-500 rounded-full p-2 absolute z-10 right-5 bottom-5", 
+    <div className={twMerge("flex md:hidden bg-green-500 rounded-full p-2 absolute z-10 right-5 bottom-24", 
     isOpen && "hidden")}
       >
       <button onClick={handleUpload}>

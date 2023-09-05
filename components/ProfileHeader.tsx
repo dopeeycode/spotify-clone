@@ -31,6 +31,7 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
     }
   }
 
+
   return (
     <>
       {avatarUrl || name ? (
@@ -71,7 +72,7 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
           )}
         </div>
       ): (
-        <Button>
+        <Button onClick={() => setModalActive((prevState) => !prevState)}>
           <FaUserAlt size={20} />
         </Button>
       )}
